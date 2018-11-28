@@ -388,14 +388,11 @@ XTerm*VT100.Translations: #override \
 
 
 !font and locale    
-xterm*locale: true    
-xterm.utf8:     true    
-xterm*utf8Title: true 
 xterm*fontMenu*fontdefault*Label: Default
-!XTerm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
-!XTerm*wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
-XTerm*font: -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
+XTerm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
 XTerm*wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
+!XTerm*font: -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
+!XTerm*wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
 !xterm*faceName: WenQuanYi Micro Hei Mono:pixelsize=14 
 !xterm*faceName: Monaco for Powerline:antialias=True:pixelsize=15
 !xterm*faceName: CosmicSansNeueMono:antialias=True:pixelsize=18
