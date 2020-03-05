@@ -1,0 +1,114 @@
+set -g default-terminal "screen-256color" # colors!
+
+set -g prefix2 C-a                        # GNU-Screen compatible prefix
+bind C-a send-prefix -2
+
+set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
+setw -q -g utf8 on
+
+# reload configuration
+bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+# pane navigation
+bind -r h select-pane -L  # move left
+bind -r j select-pane -D  # move down
+bind -r k select-pane -U  # move up
+bind -r l select-pane -R  # move right
+bind > swap-pane -D       # swap current pane with the next one
+bind < swap-pane -U       # swap current pane with the previous one
+
+# maximize current pane
+bind + run 'cut -c3- ~/.tmux.conf | sh -s _maximize_pane "#{session_name}" #D'
+
+# pane resizing
+bind -r H resize-pane -L 2
+bind -r J resize-pane -D 2
+bind -r K resize-pane -U 2
+bind -r L resize-pane -R 2
+
+
+# -- copy mode -----------------------------------------------------------------
+
+bind Enter copy-mode # enter copy mode
+
+run -b 'tmux bind -t vi-copy v begin-selection 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi v send -X begin-selection 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy C-v rectangle-toggle 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi C-v send -X rectangle-toggle 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy y copy-selection 2> /dev/null || true'
+#run -b 'tmux bind -T copy-mode-vi y send -X copy-selection-and-cancel 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy Escape cancel 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi Escape send -X cancel 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy H start-of-line 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi H send -X start-of-line 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy L end-of-line 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi L send -X end-of-line 2> /dev/null || true'
+
+# copy to macOS clipboard
+#if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | pbcopy"'
+#if -b 'command -v reattach-to-user-namespace > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | reattach-to-user-namespace pbcopy"'
+# copy to X11 clipboard
+#if -b 'command -v xsel > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xsel -i -b"'
+#if -b '! command -v xsel > /dev/null 2>&1 && command -v xclip > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xclip -i -selection clipboard >/dev/null 2>&1"'
+# copy to Windows clipboard
+#if -b 'command -v clip.exe > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | clip.exe"'
+#if -b '[ -c /dev/clipboard ]' 'bind y run -b "tmux save-buffer - > /dev/clipboard"'
+
+
+# -- buffers -------------------------------------------------------------------
+
+bind b list-buffers  # list paste buffers
+bind p paste-buffer  # paste from the top paste buffer
+bind P choose-buffer # choose which buffer to paste from
+
+# above setting copy from https://github.com/gpakosz/.tmux
+################################################################
+
+#unbind-key C-b
+#set-option -g prefix C-a
+#bind-key C-a send-prefix
+
+#bind-key C-c run "tmux show-buffer | xclip -selection clipboard -i"
+#bind-key C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+
+bind C-c run "tmux save-buffer - | xsel -ib"
+bind C-v run "tmux set-buffer \"$(xsel -ob)\"; tmux paste-buffer"
+
+setw -g monitor-activity on
+set -g visual-activity on
+
+#set-window-option -g window-status-current-bg yellow
+setw -g monitor-activity on
+
+set -g xterm-keys on
+
+setw -g mouse on
+
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel -i -p && xsel -o -p | xsel -i -b"
+#bind-key p run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
+
+#####################################################################################
+# copy from https://wiki.archlinux.org/index.php/tmux#Start_a_non-login_shell
+#
+# X clipboard integration
+# Tip: The tmux plugin tmux-yank provides similar functionality.
+# 
+# It is possible to copy a tmux selection to the X clipboard (and to X primary/secondary selections), and paste from the X clipboard into tmux. The following tmux config file snippet integrates the X clipboard/selection with the current tmux selection using the program xsel:
+# 
+# # Emacs style
+# bind-key -T copy-mode y send-keys -X copy-pipe-and-cancel "xsel -i -p && xsel -o -p | xsel -i -b"
+# bind-key C-y run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
+# 
+# # Vim style
+# bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel -i -p && xsel -o -p | xsel -i -b"
+# bind-key p run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
+# 
+# Note that it may be necessary to unbind the previous window shortcut with unbind p for the latter to work.
+# 
+# xclip could also be used for this purpose. Unlike xsel, it works better when printing a raw bitstream that does not fit the current locale. Nevertheless, it is neater to use xsel because xclip does not close STDOUT after it has read from the tmux buffer. As such, tmux does not know that the copy task has completed, and continues to wait for xclip to terminate, thereby rendering tmux unresponsive. A workaround is to redirect STDOUT to /dev/null:
+# 
+# # Vim style
+# bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
+# bind-key p run "xclip -o -sel clip | tmux load-buffer - ; tmux paste-buffer"
+#
+# copy from https://wiki.archlinux.org/index.php/tmux#Start_a_non-login_shell
+#####################################################################################
