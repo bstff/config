@@ -1,7 +1,7 @@
-! vim: fdm=marker
+! vam: fdm=marker
 
 !   themes {{{
-Xcursor.size:   32
+Xcursor.size:    36
 Xcursor.theme:          ComixCursors-Orange-Regular-Slim
 !Xcursor.theme:          Obsidian
 !*foreground: #DDEEDD
@@ -237,7 +237,7 @@ NetHack*map*white:              white
 
 !  RXVT-unicode {{{
 !urxvt setting
-URxvt.geometry:		80x20
+URxvt.geometry:		80x28
 
 URxvt.scrollBar:	false
 URxvt.scrollstyle:	next
@@ -277,6 +277,7 @@ URxvt.preeditType:	Root
 URxvt.keysym.Delete:       \033[3~
 URxvt*backspaceky:      ^H
 
+URxvt.letterSpace: -2
 !italicFont and boldItalicFont undefined
 !URxvt.font:             xft:Luxi Mono:regular:antialias=True:pixelsize=15
 !URxvt.font:               xft:DejaVu Sans Mono:book:autohint=True:size=11
@@ -288,17 +289,21 @@ URxvt*backspaceky:      ^H
 !                xft:DejaVu Sans Mono:bold:autohint=True:size=11, \
 !                xft:wenquanyi bitmap song:bold:pixelsize=15:antialias=True
 
-!URxvt.font: 9x15Bold,xft:Bitstream Vera Sans Mono:antialias=True:pixelsize=22
-URxvt.font: xft:DejaVu Sans Mono:antialias=True:pixelsize=22
-!URxvt.font:            xft:Hack:pixelsize=18,\
-!                       xft:DejaVu Sans Mono:pixelsize:18,\
-!                       xft:Unifont:pixelsize:16,\
-!                       -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt.font: xft:DejaVu Sans Mono:antialias=True:pixelsize=22,\
+            xft:YaHei Consolas Hybrid:pixelsize=22:antialias=True,\
+            -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt.boldFont: xft:YaHei Consolas Hybrid:pixelsize=22:antialias=True
 URxvt*font: -arphic-ar pl sungtil gb-medium-r-normal--0-0-0-0-p-0-iso10646-1
 
+! Normal copy-paste keybindings without perls
+URxvt.iso14755:                   false
+URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboardz
 
-
+URxvt.tabbed.no-tabbedex-keys: true
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 ! }}}
 
 ! xterm {{{ 
@@ -393,8 +398,12 @@ XTerm*VT100.Translations: #override \
 xterm*fontMenu*fontdefault*Label: Default
 !XTerm*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-?
 !XTerm*font: -*-terminus-medium-r-normal--18-*-*-*-*-*-iso10646-1
+!XTerm*font:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 XTerm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
 XTerm*wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
+!XtDefaultFont:  -misc-fixed-bold-r-*-*-15-*-75-75-c-90-iso10646-1
+!XTerm*font:     -misc-fixed-medium-r-*-*-15-*-75-75-c-90-iso10646-1
+!XTerm*boldFont: -misc-fixed-bold-r-*-*-15-*-75-75-c-90-iso10646-1
 
 !XTerm*utf8:   1
 !*VT100*font:     -Misc-Fixed-Medium-R-Normal--18-120-100-100-C-90-ISO10646-1
@@ -407,9 +416,13 @@ XTerm*wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
 !xterm*faceName: CosmicSansNeueMono:antialias=True:pixelsize=18
 !xterm*faceName: monofur:antialias=True:pixelsize=16
 
-xterm*faceName: DejaVu Sans Mono:antialias=True
-!xterm*faceName: Fira Code,Sauce Code Pro
+!xterm*faceName: DejaVu:antialias=True
+!xterm*faceName: DejaVu Sans Mono:antialias=True
+xterm*faceName: DejaVu Sans Mono for Powerline:antialias=True
+
+!xterm*faceName: Unifont:antialias=True
 !xterm*font2:            5x7
+
 !安装dejavu字体调整间距
 !xterm*faceNameDoublesize: Droid Sans Fallback:pixelsize=16:antialias=True
 !xterm*faceNameDoublesize: WenQuanYi Micro Hei Mono:antialias=True:pixelsize=18
@@ -417,8 +430,9 @@ xterm*faceName: DejaVu Sans Mono:antialias=True
 !xterm*faceNameDoublesize: WenQuanYi Micro Hei Mono:antialias=True:pixelsize=15.8
 
 xterm*faceNameDoublesize: YaHei Consolas Hybrid:antialias=True
+
 xterm*xftAntialias: true
-xterm*faceSize:     18
+xterm*faceSize:     22
 !xterm*jkWidth:False
 !xterm*mkWidth:False
 
