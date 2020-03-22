@@ -1,0 +1,165 @@
+Chipset Driver 主板及芯片组驱动
+支持机型:
+
+拯救者Y7000
+
+
+支持部件:
+
+Intel(R) Chipset Device
+
+
+Audio Driver 声卡驱动
+支持部件:
+
+Realtek High Definition Audio
+
+
+Intel VGA Driver 集成显卡驱动
+支持部件:
+
+Intel(R) HD Graphics
+
+Intel(R) HD Graphics 610
+
+Intel(R) HD Graphics 615
+
+Intel(R) HD Graphics 620
+
+Intel(R) HD Graphics 630
+
+Intel(R) HD Graphics P630
+
+Intel(R) Iris(R) Plus Graphics 635
+
+Intel(R) Iris(R) Plus Graphics 640
+
+Intel(R) Iris(R) Plus Graphics 650
+
+Intel(R) Iris(R) Plus Graphics 655
+
+Intel(R) UHD Graphics
+
+Intel(R) UHD Graphics 600
+
+Intel(R) UHD Graphics 605
+
+Intel(R) UHD Graphics 610
+
+Intel(R) UHD Graphics 615
+
+Intel(R) UHD Graphics 617
+
+Intel(R) UHD Graphics 620
+
+Intel(R) UHD Graphics 630
+
+Intel(R) UHD Graphics P630
+
+
+
+LAN Driver 网卡驱动
+支持部件:
+
+Realtek PCIe FE Family Controller
+
+Realtek PCI GbE Family Controller
+
+Realtek PCIe GbE Family Controller
+
+
+
+WLan Driver
+支持部件:
+
+Intel 3165 Wlan
+
+Intel 9560 Wlan
+
+Qualcomm Atheros NFA435A Wlan
+
+Realtek 8821/8822 Wlan
+
+
+Bluetooth Driver 蓝牙驱动
+支持部件:
+
+Intel 3165 Bluetooth
+
+Intel 9560 Bluetooth
+
+Qualcomm Atheros NFA435A Bluetooth
+
+Realtek 8821/8822 Bluetooth 
+
+
+
+Camera Driver摄像头驱动
+支持部件:
+
+Integrated Camera
+
+EasyCamera
+
+Lenovo EasyCamera
+
+
+
+Intel Rapid Storage Technology (IRST) Driver 英特尔快速存储技术（IRTS）驱动程序
+支持部件:
+
+Intel(R) Rapid Storage Technology
+
+Intel(R) 300 Series Chipset Family SATA AHCI Controller
+
+
+
+Intel Management Engine Interface (MEI) Driver 英特尔管理引擎接口（MEI）驱动程序 
+支持部件:
+
+Intel Management Engine Interface
+
+
+
+EM Driver with YMC 电源管理
+支持部件:
+
+Lenovo ACPI-Compliant Virtual Power Controller
+
+
+Intel Rapid Storage Technology (IRST) Patch 英特尔快速存储技术（IRTS）补丁 
+支持部件:
+
+Intel Rapid Storage Technology (IRST) Patch
+
+
+
+
+Intel Serial-IO (SIO) Driver 英特尔串行IO（SIO）驱动程序 
+支持部件:
+
+Intel(R) Serial IO GPIO Driver
+
+Intel(R) Serial IO I2C Driver
+
+Intel(R) Serial IO SPI driver
+
+Intel(R) Serial IO UART Driver
+
+
+
+
+
+Lenovo Utility Tips（响应联想笔记本键盘上的热键功能）
+支持部件:
+
+Lenovo Utility Tips（响应联想笔记本键盘上的热键功能）
+
+
+Lenovo Vantage Gaming Feature Driver
+支持部件:
+
+Lenovo Vantage Gaming Feature Driver
+
+
+Intel Management Engine Firmware Update Tool

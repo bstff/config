@@ -1,0 +1,6 @@
+touchpad
+*Must* Support Serial-IO
+
+headphone/speaker switch
+ALSA for SoC audio support
+HD-Audio (maybe useful)
