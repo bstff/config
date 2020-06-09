@@ -303,9 +303,20 @@ URxvt*backspaceky:      ^H
 !                xft:wenquanyi bitmap song:bold:pixelsize=15:antialias=True
 
 URxvt.letterSpace: -1
-URxvt.font: xft:DejaVu Sans Mono:antialias=True:pixelsize=22
-URxvt.boldFont: xft:YaHei Consolas Hybrid:pixelsize=22:antialias=True
-URxvt*font: -arphic-ar pl sungtil gb-medium-r-normal--0-0-0-0-p-0-iso10646-1
+! URxvt.font: xft:DejaVu Sans Mono:antialias=True:pixelsize=22
+! URxvt.boldFont: xft:YaHei Consolas Hybrid:pixelsize=22:antialias=True
+! URxvt*font: -arphic-ar pl sungtil gb-medium-r-normal--0-0-0-0-p-0-iso10646-1
+
+URxvt.font: xft:DejaVu Sans Mono for Powerline:antialias=True:pixelsize=28,\
+             xft:Fira Code:pixelsize=22:antialias=True,\
+             xft:YaHei Consolas Hybrid:pixelsize=28:antialias=True,\
+             xft:DejaVu Sans:pixelsize=28:antialias=True,\
+             -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:antialias=True:pixelsize=28,\
+                 xft:YaHei Consolas Hybrid:pixelsize=28:antialias=True,\
+                 xft:Fira Code:pixelsize=28:antialias=True, \
+                 xft:DejaVu Sans:pixelsize=28:antialias=True,\
+                 -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 
 
 ! }}}
