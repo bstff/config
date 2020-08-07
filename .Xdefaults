@@ -464,6 +464,10 @@ XTerm*alwaysHighlight: false
 !urgent trigger
 XTerm*bellIsUrgent: false
 
+XTerm*useClipping: false
+XTerm*toolBar: off
+XTerm*allowBoldFonts: false
+
 ! }}}
 
 ! {{{              GNUPLOT 
